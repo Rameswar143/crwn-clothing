@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import HomePage from "./pages/homepage/homepage.component";
 import { Route } from "react-router-dom";
-
+import ShopPage from "./pages/shop/shop.component";
 const HatsPage = () => (
   <div>
     <center>
@@ -42,12 +42,13 @@ function App() {
   return (
     <div>
       <switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/shop/hats" component={HatsPage} />
-        <Route exact path="/shop/jackets" component={JacketsPage} />
-        <Route exact path="/shop/sneakers" component={SneakersPage} />
-        <Route exact path="/shop/womens" component={WomensPage} />
-        <Route path="/shop/mens" component={MensPage} />
+        <Route path="/" exact component={HomePage} />
+        <Route path="/shop/hats" exact component={HatsPage} />
+        <Route path="/shop/jackets" exact component={JacketsPage} />
+        <Route path="/shop/sneakers" exact component={SneakersPage} />
+        <Route path="/shop/womens" exact component={WomensPage} />
+        <Route path="/shop/mens" exact component={MensPage} />
+        <Route path="/shop" component={ShopPage} />
       </switch>
     </div>
   );
