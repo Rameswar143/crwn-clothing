@@ -3,6 +3,7 @@ import "./App.css";
 import HomePage from "./pages/homepage/homepage.component";
 import { Route } from "react-router-dom";
 import ShopPage from "./pages/shop/shop.component";
+import Header from "./components/header/header.component";
 const HatsPage = () => (
   <div>
     <center>
@@ -38,9 +39,17 @@ const WomensPage = () => (
     </center>
   </div>
 );
+const ContactPage = () => (
+  <div>
+    <center>
+      <h1>CONTACTS PAGE</h1>
+    </center>
+  </div>
+);
 function App() {
   return (
     <div>
+    <Header/>
       <switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/shop/hats" exact component={HatsPage} />
@@ -48,9 +57,10 @@ function App() {
         <Route path="/shop/sneakers" exact component={SneakersPage} />
         <Route path="/shop/womens" exact component={WomensPage} />
         <Route path="/shop/mens" exact component={MensPage} />
-        <Route path="/shop" component={ShopPage} />
+        <Route path="/shop" exact component={ShopPage} />
+        <Route path="/contact" component={ContactPage} />
       </switch>
-    </div>
+    </div >
   );
 }
 export default App;
