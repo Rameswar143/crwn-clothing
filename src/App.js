@@ -5,6 +5,48 @@ import { Route } from "react-router-dom";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUPPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
+import { auth } from "./firebase/firebase.utils"
+
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      currentUser: null
+    }
+  }
+  unSubscribeFromAuth = null;
+  componentDidMount() {
+    this.unSubscribeFromAuth = auth.onAuthStateChanged(user => {
+      this.setState({ currentUser: user });
+      console.log(user);
+    });
+  }
+
+  componentWillUnmount() {
+    this.unSubscribeFromAuth();
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/shop/hats" exact component={HatsPage} />
+          <Route path="/shop/jackets" exact component={JacketsPage} />
+          <Route path="/shop/sneakers" exact component={SneakersPage} />
+          <Route path="/shop/womens" exact component={WomensPage} />
+          <Route path="/shop/mens" exact component={MensPage} />
+          <Route path="/shop" exact component={ShopPage} />
+          <Route path="/contact" exact component={ContactPage} />
+          <Route path="/signin" component={SignInAndSignUPPage} />
+        </switch>
+      </div >
+    );
+  }
+}
+
 const HatsPage = () => (
   <div>
     <center>
@@ -47,22 +89,4 @@ const ContactPage = () => (
     </center>
   </div>
 );
-function App() {
-  return (
-    <div>
-      <Header />
-      <switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/shop/hats" exact component={HatsPage} />
-        <Route path="/shop/jackets" exact component={JacketsPage} />
-        <Route path="/shop/sneakers" exact component={SneakersPage} />
-        <Route path="/shop/womens" exact component={WomensPage} />
-        <Route path="/shop/mens" exact component={MensPage} />
-        <Route path="/shop" exact component={ShopPage} />
-        <Route path="/contact" exact component={ContactPage} />
-        <Route path="/signin" component={SignInAndSignUPPage} />
-      </switch>
-    </div >
-  );
-}
 export default App;
