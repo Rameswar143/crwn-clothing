@@ -41,12 +41,14 @@ export default class SignIn extends React.Component {
             label="Password"
             required
           />
-          <CustomButton type="submit">Sign in</CustomButton>
-          &nbsp;&nbsp;&nbsp;
-          <CustomButton onClick={signInWithGoogle}>
-            {" "}
-            Sign in with GOOGLE{" "}
-          </CustomButton>
+
+          <div className="buttons">
+            <CustomButton type="submit">Sign in</CustomButton>
+            <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+              {" "}
+              Sign in with GOOGLE{" "}
+            </CustomButton>
+          </div>
         </form>
       </div>
     );
