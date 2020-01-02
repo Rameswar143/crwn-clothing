@@ -27,10 +27,10 @@ export default class SignUp extends React.Component {
       );
       await createUserProfileDocument(user, { displayName });
       this.state = {
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
       };
     } catch (error) {
       console.log("error in creating user", error.message);
