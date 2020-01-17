@@ -1,11 +1,8 @@
-import React from "react";
-// import SHOP_DATA from "./shop.data";
-import CollectionPreview from "../../components/preview collection/collection-preview.component";
-import "./shop.styles.scss";
+import React from 'react'
+import CollectionView from "../../components/preview collection/collection-view.component";
 import axios from 'axios';
 import { config } from '../../utils/config';
-
-export default class ShopPage extends React.Component {
+class HatsPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,10 +12,10 @@ export default class ShopPage extends React.Component {
 
   componentDidMount() {
     axios
-      .get(config.apiUrl + 'shop/fetchShopData')
+      .get(config.apiUrl + `shop/getItems/hats`)
       .then(res => {
         console.log(this.state.collections);
-        this.setState({collections:res.data});
+        this.setState({ collections: res.data });
         console.log(this.state.collections);
       })
       .catch(error => console.log(error));
@@ -30,9 +27,10 @@ export default class ShopPage extends React.Component {
     return (
       <div className="shop-page">
         {collections.map(({ id, ...otherCollectionProps }) => (
-          <CollectionPreview key={id} {...otherCollectionProps} />
+          <CollectionView key={id} {...otherCollectionProps} />
         ))}
       </div>
     );
   }
 }
+export default HatsPage;

@@ -1,9 +1,11 @@
 import React from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+// import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import "./sign-up.styles.scss";
-export default class SignUp extends React.Component {
+import { connect } from 'react-redux';
+import { registerUser } from '../../redux/register/register.actions'
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,17 +23,7 @@ export default class SignUp extends React.Component {
       return;
     }
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await createUserProfileDocument(user, { displayName });
-      this.state = {
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-      };
+      this.props.register({ 'displayName': displayName, 'email': email, 'password': password });
     } catch (error) {
       console.log("error in creating user", error.message);
     }
@@ -87,3 +79,7 @@ export default class SignUp extends React.Component {
     );
   }
 }
+const dispatchProps = {
+  register: registerUser
+}
+export default connect(null, dispatchProps)(SignUp);
