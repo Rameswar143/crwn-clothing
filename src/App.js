@@ -15,18 +15,19 @@ import SneakersPage from './pages/Itempages/sneakers.componet'
 import MensPage from './pages/Itempages/mens.componet'
 import WomensPage from './pages/Itempages/womens.componet'
 
+
 class App extends React.Component {
   unsubscribeFromAuth = null
 
-  componentDidMount () {
+  componentDidMount() {
     setCurrentUser(this.props.currentUser)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     //	this.unsubscribeFromAuth();
   }
 
-  render () {
+  render() {
     return (
       <div>
         <Header />
@@ -46,8 +47,8 @@ class App extends React.Component {
               this.props.currentUser ? (
                 <Redirect to='/' />
               ) : (
-                <SignInAndSignUpPage />
-              )
+                  <SignInAndSignUpPage />
+                )
             }
           />
         </Switch>

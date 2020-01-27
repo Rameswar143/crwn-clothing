@@ -23,7 +23,7 @@ class SignUp extends React.Component {
       return;
     }
     try {
-      this.props.register({ 'displayName': displayName, 'email': email, 'password': password });
+      this.props.register({ 'displayName': displayName, 'userName': email, 'password': password });
     } catch (error) {
       console.log("error in creating user", error.message);
     }
