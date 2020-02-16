@@ -14,9 +14,7 @@ class HatsPage extends React.Component {
     axios
       .get(config.apiUrl + `shop/getItems/hats`)
       .then(res => {
-        console.log(this.state.collections);
         this.setState({ collections: res.data });
-        console.log(this.state.collections);
       })
       .catch(error => console.log(error));
   }

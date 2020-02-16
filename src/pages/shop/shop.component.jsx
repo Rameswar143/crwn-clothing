@@ -17,9 +17,7 @@ export default class ShopPage extends React.Component {
     axios
       .get(config.apiUrl + 'shop/fetchShopData')
       .then(res => {
-        console.log(this.state.collections);
         this.setState({collections:res.data});
-        console.log(this.state.collections);
       })
       .catch(error => console.log(error));
   }

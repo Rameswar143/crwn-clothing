@@ -6,10 +6,9 @@ const CollectionView = ({ title, items }) => {
     <div className="collection-preview">
       <h1 className="title">{title.toUpperCase()}</h1>
       <div className="preview">
-        {items
-          .map(({ id, ...otherCollectionItems }) => (
-            <CollectionItem key={id} {...otherCollectionItems} />
-          ))}
+        {items.map(item => (
+          <CollectionItem key={item.id} item_data={item} />
+        ))}
       </div>
     </div>
   );
